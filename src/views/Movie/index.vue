@@ -1,12 +1,87 @@
 <template>
-    <div>hello Movie</div>
+  <div id="main">
+    <Header title="小桃子电影" />
+    <div id="content">
+      <div class="movie_menu">
+        <router-link tag="div" to="/movie/city" class="city_name">
+          <span>大连</span><i class="iconfont icon-bofangjilu"></i>
+        </router-link>
+        <div class="hot_swtich">
+          <router-link class="hot_item"  tag="div" to="/movie/nowPlaying">正在热映</router-link>
+          <router-link class="hot_item" tag="div" to="/movie/comingSoon">即将上映</router-link>
+        </div>
+        <router-link tag="div" to="/movie/search" class="search_enter">
+          <i class="iconfont icon-sousuo"></i>
+        </router-link>
+      </div>
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+    </div>
+    <tab-bar />
+  </div>
 </template>
 
 <script>
+import Header from "@/components/Header";
+import TabBar from "@/components/TabBar";
 export default {
-    
-}
+  name: "Movie",
+  components: {
+    Header,
+    TabBar,
+  },
+};
 </script>
-<style>
 
+<style scoped>
+#content .movie_menu {
+  display: flex;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+}
+.movie_menu .city_name {
+  margin-left: 20px;
+  height: 100%;
+  line-height: 45px;
+}
+
+.movie_menu .city_name.router-link-active{
+  color: #ef4238;
+  border-bottom: 2px #ef4238 solid;
+}
+.movie_menu .hot_swtich {
+  display: flex;
+  height: 100%;
+  line-height: 45px;
+}
+.movie_menu .hot_swtich .hot_item {
+  font-size: 15px;
+  color: #666;
+  width: 80px;
+  text-align: center;
+  margin: 0 12px;
+  font-weight: 600;
+}
+.movie_menu .hot_swtich .hot_item.router-link-active{
+  color: #ef4238;
+  border-bottom: 2px #ef4238 solid;
+}
+
+.movie_menu .search_enter {
+  margin-right: 20px;
+  height: 100%;
+  line-height: 45px;
+}
+
+.movie_menu .search_enter.router-link-active{
+  color: #ef4238;
+}
+.movie_menu .search_ente i {
+  font-size: 24px;
+  color: red;
+}
 </style>
